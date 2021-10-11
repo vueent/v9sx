@@ -14,6 +14,13 @@ This library contains a number of additional validation rules, modifiers and inj
    4. [Integer string](#integer-string)
    5. [Russian postal code](#russian-postal-code)
 3. [Modifiers](#modifiers)
+   1. [Compact](#compact)
+   2. [Replace factory](#replace-factory)
+   3. [To lower case](#to-lower-case)
+   4. [To upper case](#to-upper-case)
+   5. [Trim end](#trim-end)
+   6. [Trim start](#trim-start)
+   7. [Trim](#trim)
 4. [Injections](#injections)
 5. [License](#license)
 
@@ -107,6 +114,93 @@ console.log(check('123-456')); // false
 
 Data modifiers.
 
+### Compact
+
+Removes space characters inside a value.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { compact } from 'v9sx';
+
+const check = simplify(v9s(false).use(compact));
+
+console.log(check('1 \t 234 567')); // '1234567'
+```
+
+### Replace factory
+
+Returns a modifier function that replaces a substring.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { replaceFactory } from 'v9sx';
+```
+
+### To lower case
+
+Modifies a value to lowercase.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { toLowerCase } from 'v9sx';
+
+const check = simplify(v9s(false).use(toLowerCase));
+
+console.log(check('ABCDEFГДЕЁЖ')); // 'abcdefгдеёж'
+```
+
+### To upper case
+
+Modifies a value to uppercase.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { toUpperCase } from 'v9sx';
+
+const check = simplify(v9s(false).use(toUpperCase));
+
+console.log(check('abcdefгдеёж')); // 'ABCDEFГДЕЁЖ'
+```
+
+### Trim end
+
+Removes spaces at the beginning of a value.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { trimEnd } from 'v9sx';
+
+const check = simplify(v9s(false).use(trimEnd));
+
+console.log(check('  \t   hello, world!   \t ')); // '  \t   hello, world!'
+```
+
+### Trim start
+
+Removes spaces at the end of a value.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { trimStart } from 'v9sx';
+
+const check = simplify(v9s(false).use(trimStart));
+
+console.log(check('  \t   hello, world!   \t ')); // 'hello, world!   \t '
+```
+
+### Trim
+
+Removes the leading and trailing white space and line terminator characters from a string.
+
+```ts
+import { v9s, simplify } from 'v9s';
+import { trim } from 'v9sx';
+
+const check = simplify(v9s(false).use(trim));
+
+console.log(check(' \t hello, world!   \t')); // 'hello, world!'
+```
+
 ## Injections
 
 Injections that extends a behavior of _v9s_.
@@ -114,7 +208,3 @@ Injections that extends a behavior of _v9s_.
 ## LICENSE
 
 [MIT](./LICENSE)
-
-```
-
-```
