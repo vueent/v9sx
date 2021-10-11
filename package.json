@@ -1,0 +1,72 @@
+{
+  "name": "v9sx",
+  "version": "0.0.1",
+  "description": "v9s extensions",
+  "homepage": "https://vueent.github.io/v9sx/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vueent/v9sx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vueent/v9sx/issues"
+  },
+  "type": "module",
+  "main": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "jsdelivr": "lib/index.iife.js",
+  "unpkg": "lib/index.iife.js",
+  "module": "lib/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs",
+      "browser": "./lib/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "build": "rimraf ./lib && rollup --config rollup.config.js",
+    "test": "npm run test:clear && npm run test:unit",
+    "test:clear": "jest --clearCache",
+    "test:unit": "jest",
+    "test:coverage": "jest --collect-coverage",
+    "test:debug": "node --inspect node_modules/.bin/jest --watch --runInBand",
+    "prepublishOnly": "npm run build && npm run test:unit",
+    "lint": "eslint src/**/*.ts tests/**/*.ts",
+    "docs:dev": "vuepress dev docs-src/src",
+    "docs:build": "vuepress build --dest ./docs docs-src/src"
+  },
+  "keywords": [
+    "vueent",
+    "v9s",
+    "typescript",
+    "validations",
+    "validation"
+  ],
+  "author": "Alexey Nosov",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.3",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.2.5",
+    "lint-staged": "^11.2.3",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.58.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
+  }
+}

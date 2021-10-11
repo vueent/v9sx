@@ -1,0 +1,26 @@
+#ide
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# vendor
+node_modules/
+
+# dist
+docs/
+docs-src/dist
+lib/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# tests
+/coverage
+
