@@ -1,8 +1,8 @@
 {
   "name": "v9sx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "v9s extensions",
-  "homepage": "https://vueent.github.io/v9sx/",
+  "homepage": "https://github.com/vueent/v9sx/",
   "repository": {
     "type": "git",
     "url": "git@github.com:vueent/v9sx.git"
